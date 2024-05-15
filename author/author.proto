@@ -1,0 +1,49 @@
+// Specify the syntax version to use for the .proto file
+
+syntax = "proto3";
+// Define the package name for the generated code
+
+package author;
+// Define a service for managing authors
+
+service AuthorService {
+    // RPC to get an author by ID
+  
+  rpc GetAuthor (AuthorRequest) returns (AuthorResponse);
+    // RPC to create a new author
+
+  rpc CreateAuthor (AuthorCreateRequest) returns (AuthorResponse);
+    // RPC to update an existing author
+
+  rpc UpdateAuthor (AuthorUpdateRequest) returns (AuthorResponse);
+    // RPC to delete an author by ID
+
+  rpc DeleteAuthor (AuthorDeleteRequest) returns (AuthorResponse);
+}
+
+// Message format for a request to get an author
+message AuthorRequest {
+  string id = 1;
+}
+
+// Message format for the response containing author details
+message AuthorResponse {
+  string id = 1;
+  string name = 2;
+}
+
+// Message format for a request to create a new author
+message AuthorCreateRequest {
+  string name = 1;
+}
+
+// Message format for a request to update an existing author
+message AuthorUpdateRequest {
+  string id = 1;
+  string name = 2;
+}
+
+// Message format for a request to delete an author
+message AuthorDeleteRequest {
+  string id = 1;
+}

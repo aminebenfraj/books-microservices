@@ -1,0 +1,47 @@
+// Specify the syntax version to use for the .proto file
+syntax = "proto3";
+
+// Define the package name for the generated code
+package book;
+
+// Define a service for managing books
+service BookService {
+    // RPC to get a book by ID
+  rpc GetBook (BookRequest) returns (BookResponse);
+    // RPC to create a new book
+  rpc CreateBook (BookCreateRequest) returns (BookResponse);
+    // RPC to update an existing book
+  rpc UpdateBook (BookUpdateRequest) returns (BookResponse);
+    // RPC to delete a book by ID
+  rpc DeleteBook (BookDeleteRequest) returns (BookResponse);
+}
+
+// Message format for a request to get a book
+message BookRequest {
+  string id = 1;
+}
+
+// Message format for the response containing book details
+message BookResponse {
+  string id = 1;
+  string title = 2;
+  string authorId = 3;
+}
+
+// Message format for a request to create a new book
+message BookCreateRequest {
+  string title = 1;
+  string authorId = 2;
+}
+
+// Message format for a request to update an existing book
+message BookUpdateRequest {
+  string id = 1;
+  string title = 2;
+  string authorId = 3;
+}
+
+// Message format for a request to delete a book
+message BookDeleteRequest {
+  string id = 1;
+}

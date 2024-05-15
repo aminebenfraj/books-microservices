@@ -1,0 +1,40 @@
+// Specify the syntax version to use for the .proto file
+syntax = "proto3";
+// Define the package name for the generated code
+package borrower;
+
+// Define a service for managing borrowers
+service BorrowerService {
+    // RPC to get a borrower by ID
+  rpc GetBorrower (BorrowerRequest) returns (BorrowerResponse);
+    // RPC to create a new borrower
+  rpc CreateBorrower (BorrowerCreateRequest) returns (BorrowerResponse);
+    // RPC to update an existing borrower
+  rpc UpdateBorrower (BorrowerUpdateRequest) returns (BorrowerResponse);
+    // RPC to delete a borrower by ID
+  rpc DeleteBorrower (BorrowerDeleteRequest) returns (BorrowerResponse);
+}
+
+// Message format for a request to get a borrower
+message BorrowerRequest {
+  string id = 1;
+}
+// Message format for the response containing borrower details
+message BorrowerResponse {
+  string id = 1;
+  string name = 2;
+}
+// Message format for a request to create a new borrower
+message BorrowerCreateRequest {
+  string name = 1;
+}
+// Message format for a request to update an existing borrower
+message BorrowerUpdateRequest {
+  string id = 1;
+  string name = 2;
+}
+
+// Message format for a request to delete a borrower
+message BorrowerDeleteRequest {
+  string id = 1;
+}
